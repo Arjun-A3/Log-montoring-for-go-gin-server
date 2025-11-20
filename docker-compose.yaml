@@ -9,8 +9,14 @@ services:
       dockerfile: dockerFile
     ports:
       - "9000:9000"
+    volumes:
+      - go-logs:/app/logs
     networks:
       - monitoring
 
+volumes:
+  go-logs:
+
 networks:
   monitoring:
+    external: true

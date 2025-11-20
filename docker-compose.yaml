@@ -6,8 +6,11 @@ services:
     container_name: "go-server-test"
     build:
       context: ./go-server
-      dockerfile: Dockerfile
+      dockerfile: dockerFile
     ports:
       - "9000:9000"
     networks:
       - monitoring
+
+networks:
+  monitoring:

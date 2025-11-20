@@ -1,4 +1,4 @@
-# Log-montoring-for-go-gin-server
+# Log-montoring-for-go-gin-server (WIP)
 This is a overall architecture for log monitoring in a golang gin server using promtail, loki and grafana dashboard
 
 promtail is a software used to send log data from server to loki,

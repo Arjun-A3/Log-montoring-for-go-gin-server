@@ -1,7 +1,6 @@
 package main
 
 import (
-	"log"
 	"log/slog"
 	"net/http"
 	"os"
@@ -23,9 +22,9 @@ func main() {
 		panic("Failed to setup logging: " + err.Error())
 	}
 	slog.Info("Server starting")
-	for i := 0; i < 1000; i++ {
-		log.Println("tests log")
-	}
+	// for i := 0; i < 1000; i++ {
+	// 	log.Println("tests log")
+	// }
 	r := gin.Default()
 	r.Use(GinLoggingMiddleware())
 	r.GET("/ping", func(c *gin.Context) {

@@ -13,6 +13,35 @@ services:
       - go-logs:/app/logs
     networks:
       - monitoring
+  promtail:
+    image: grafana/promtail:latest
+    container_name: promtail
+    volumes:
+      - go-logs:/logs
+      - ./promtail-config.yaml:/etc/promtail/config.yaml
+    command: -config.file=/etc/promtail/config.yaml
+    depends_on:
+      - go-server
+    networks:
+      - monitoring
+  loki:
+    image: grafana/loki:latest
+    container_name: loki
+    ports:
+      - "3100:3100"
+    networks:
+      - monitoring
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    depends_on:
+      - loki
+    networks:
+      - monitoring
 
 volumes:
   go-logs:

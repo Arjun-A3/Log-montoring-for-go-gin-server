@@ -8,3 +8,5 @@ initially we can run the simple server golang server and ask it to store the log
 
 <img width="945" height="434" alt="image" src="https://github.com/user-attachments/assets/5ac0021a-644a-42ab-b2bd-02ab69bb4c6d" />
 
+
+promtail has been deprected so that, we should use another software from grafana known as alloy

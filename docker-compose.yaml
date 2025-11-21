@@ -43,6 +43,21 @@ services:
     networks:
       - monitoring
 
+alloy:
+    image: grafana/alloy:v1.8.1
+    container_name: alloy
+    ports:
+      - "12345:12345"     # HTTP server for Alloy UI and control
+      - "4317:4317"       # OTLP gRPC port for receiving logs from applications
+    volumes:
+      - go-logs:/app/logs
+      - ./config.alloy:/etc/alloy/config.alloy
+    command: ["--config.file=/etc/alloy/config.alloy"]
+    depends_on:
+      - loki
+    networks:
+      - monitoring
+
 volumes:
   go-logs:
 
